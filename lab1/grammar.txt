@@ -1,0 +1,59 @@
+Grammar for very simple SQL SELECT statements:
+
+Grammar
+-------
+ALL-CAPS : nonterminal
+all-lowercase : literal keyword
+literal () [] {} are quoted
+
+STMT ::=
+        select EXPRS from NAMES
+
+EXPRS ::=                            comma-separated expression list
+        EXPR
+        EXPR , EXPRS
+
+EXPR ::=
+        *                            star (all fields)
+        COLUMN                       a column from a table
+        NAME "(" EXPRS ")"           function application
+        INT                          integer literal
+        "(" EXPR ")"                 parenthesized expression
+        EXPR OP EXPR                 arithmetic, comparison
+
+COLUMN ::=
+       NAME
+       NAME . NAME
+
+NAMES ::=                            comma-separated name list
+       NAME
+       NAME , NAMES
+
+
+NAME is an ID (described below)
+OP is an operator listed below
+
+Examples:
+
+select id, name from Student
+select count(*) from Student
+select * from Student, Grade
+select Student.name, Grade.gpa from Student, Grade
+select gpa, 2 * total from Grade
+
+Tokens
+------
+
+ID:         ['a'-'z''A'-'Z']['a'-'z''A'-'Z''0'-'9''_']*
+
+            except for the keywords, which are: 
+
+              select, from, true, false, and, or, not
+  
+            Keywords and identifiers may be written in lower case or
+            upper case, but are converted to lower case.
+
+INT:        -?[0-9]+
+
+OP:         + - * /
+

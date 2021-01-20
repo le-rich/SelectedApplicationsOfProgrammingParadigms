@@ -1,0 +1,24 @@
+### Starting build.
+# Target: main.ml.depends, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, debug, extension:ml, file:main.ml, ocaml, ocamldep, quiet, short_paths, thread }
+ocamlfind ocamldep -package core -ppx 'ppx-jane -as-ppx' -modules main.ml > main.ml.depends # cached
+# Target: ast.ml.depends, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, debug, extension:ml, file:ast.ml, ocaml, ocamldep, quiet, short_paths, thread }
+ocamlfind ocamldep -package core -ppx 'ppx-jane -as-ppx' -modules ast.ml > ast.ml.depends # cached
+# Target: ast.cmo, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, byte, compile, debug, extension:cmo, extension:ml, file:ast.cmo, file:ast.ml, implem, ocaml, quiet, short_paths, thread }
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package core -ppx 'ppx-jane -as-ppx' -o ast.cmo ast.ml # cached
+# Target: lexer.mll, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, debug, extension:mll, file:lexer.mll, lexer, ocaml, ocamllex, quiet, short_paths, thread }
+/home/twoceps/.opam/4.11.1/bin/ocamllex.opt -q lexer.mll # cached
+# Target: lexer.ml.depends, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, debug, extension:ml, file:lexer.ml, ocaml, ocamldep, quiet, short_paths, thread }
+ocamlfind ocamldep -package core -ppx 'ppx-jane -as-ppx' -modules lexer.ml > lexer.ml.depends # cached
+# Target: parser.mly.depends, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, debug, extension:mly, file:parser.mly, infer, menhir_ocamldep, ocaml, ocamldep, quiet, short_paths, thread }
+menhir --raw-depend --ocamldep 'ocamlfind ocamldep -modules' parser.mly > parser.mly.depends # cached
+# Target: parser.mly, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, byte, compile, debug, extension:ml, extension:mly, file:parser.ml, file:parser.mly, infer, menhir, ocaml, parser, quiet, short_paths, thread }
+menhir --ocamlc 'ocamlfind ocamlc -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package core -ppx '\''ppx-jane -as-ppx'\''' --infer parser.mly # cached
+# Target: parser.mli.depends, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, debug, extension:mli, file:parser.mli, ocaml, ocamldep, quiet, short_paths, thread }
+ocamlfind ocamldep -package core -ppx 'ppx-jane -as-ppx' -modules parser.mli > parser.mli.depends # cached
+# Target: parser.cmi, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, byte, compile, debug, extension:mli, file:parser.mli, interf, ocaml, quiet, short_paths, thread }
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package core -ppx 'ppx-jane -as-ppx' -o parser.cmi parser.mli # cached
+# Target: lexer.cmo, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, byte, compile, debug, extension:cmo, extension:ml, file:lexer.cmo, file:lexer.ml, implem, ocaml, quiet, short_paths, thread }
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package core -ppx 'ppx-jane -as-ppx' -o lexer.cmo lexer.ml # cached
+# Target: main.cmo, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, byte, compile, debug, extension:cmo, extension:ml, file:main.cmo, file:main.ml, implem, ocaml, quiet, short_paths, thread }
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package core -ppx 'ppx-jane -as-ppx' -o main.cmo main.ml # cached
+# Compilation successful.

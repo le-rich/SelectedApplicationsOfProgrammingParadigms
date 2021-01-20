@@ -1,0 +1,14 @@
+#use "topfind";;
+#thread
+#require "core.top";;
+#require "core.syntax";;
+
+#directory "_build";;
+#load "lexer.cmo";;
+#load "parser.cmo";;
+#load "main.cmo";;
+
+open Core;;
+open Ast;;
+open Main;;
+
