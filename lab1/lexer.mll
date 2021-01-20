@@ -34,6 +34,8 @@ rule read = parse
 	| '/'						{ DIVIDE }	
 	| '('						{ LPAR }
 	| ')'						{ RPAR }
+	| ','						{ COMMA }
+	| '.'						{ DOT }
 	|	id						{ NAME (Lexing.lexeme lexbuf) }
 	| eof						{ EOF }
 	| _ { raise (SyntaxError("Unexpected Token: " ^ Lexing.lexeme lexbuf)) }

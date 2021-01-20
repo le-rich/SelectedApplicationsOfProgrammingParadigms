@@ -17,7 +17,9 @@ type token =
   | FROM of (string)
   | FALSE
   | EOF
+  | DOT
   | DIVIDE
+  | COMMA
   | AND
 
 (* This exception is raised by the monolithic API functions. *)

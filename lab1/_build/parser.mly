@@ -8,6 +8,8 @@
 %token <string> FROM
 %token <string> NAME
 %token STAR 
+%token COMMA
+%token DOT
 %token PLUS MINUS TIMES DIVIDE
 %token LPAR RPAR
 %token EOF 
@@ -26,14 +28,17 @@ prog:
 	| EOF						{ None }
 	;
 
+
 column:
-	| n = NAME;					{ Column (n) }
+	| n = NAME;											{ Column (n) }
+	| t = NAME; DOT; c = NAME				{ TableColumn (t, c) }
 	;
 	
 expr:
-	| STAR;											{ Star }
-	| c = column;								{ ColumnExpr (c) }
-	| n = INT										{ Int n }
-	| MINUS; n = INT						{ Int (- n) }
-	| LPAR; e = expr; RPAR			{ e }
+	| STAR;													{ Star }
+	| c = column;										{ ColumnExpr (c) }
+	| n = INT												{ Int n }
+	| MINUS; n = INT								{ Int (- n) }
+	| LPAR; e = expr; RPAR					{ e } 
+	|	n = NAME; LPAR; e = separated_list(COMMA, expr); RPAR			{ Prim (n, e) }
 	;
