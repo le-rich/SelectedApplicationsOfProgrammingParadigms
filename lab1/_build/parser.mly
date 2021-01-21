@@ -10,14 +10,13 @@
 %token STAR 
 %token COMMA
 %token DOT
-%token PLUS MINUS TIMES DIVIDE
+%token PLUS MINUS DIVIDE
 %token LPAR RPAR
 %token EOF 
 %token TRUE FALSE AND OR NOT 
 
 %left MINUS PLUS
-%left TIMES DIVIDE
-%left SELECT ID
+%left STAR DIVIDE
 
 %start <Ast.stmt option> prog
 
@@ -55,7 +54,7 @@ expr:
 	| n = INT																										{ Int n }
 	| MINUS; n = INT																						{ Int (- n) }
 	| LPAR; e = expr; RPAR																			{ e } 
-	| e1 = expr; TIMES; e2 = expr 															{ Prim("*", [e1;e2]) }
+	| e1 = expr; STAR; e2 = expr																{ Prim("*", [e1;e2]) }
   | e1 = expr; PLUS; e2 = expr 																{ Prim("+", [e1; e2]) }
   | e1 = expr; MINUS; e2 = expr 															{ Prim("-", [e1; e2]) }
 	| e1 = expr; DIVIDE; e2 = expr															{ Prim("/", [e1; e2]) }

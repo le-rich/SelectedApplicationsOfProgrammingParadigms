@@ -30,7 +30,6 @@ rule read = parse
 	| "*"						{ STAR }
 	|	'+'						{ PLUS }
 	| '-'						{ MINUS }
-	| '*'						{ TIMES }
 	| '/'						{ DIVIDE }	
 	| '('						{ LPAR }
 	| ')'						{ RPAR }

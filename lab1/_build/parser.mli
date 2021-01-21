@@ -3,7 +3,6 @@
 
 type token = 
   | TRUE
-  | TIMES
   | STAR
   | SELECT
   | RPAR
