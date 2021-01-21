@@ -1,5 +1,5 @@
 #!/bin/bash
 
-corebuild -use-menhir parser.cmo
-corebuild -use-menhir lexer.cmo
-corebuild -use-menhir main.cmo
+corebuild -use-menhir parser.cmo -r
+corebuild -use-menhir lexer.cmo -r
+corebuild -use-menhir main.cmo -r

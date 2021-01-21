@@ -5,16 +5,16 @@ type token =
   | TRUE
   | TIMES
   | STAR
-  | SELECT of (string)
+  | SELECT
   | RPAR
   | PLUS
   | OR
   | NOT
-  | NAME of (string)
   | MINUS
   | LPAR
   | INT of (int)
-  | FROM of (string)
+  | ID of (string)
+  | FROM
   | FALSE
   | EOF
   | DOT
@@ -28,4 +28,4 @@ exception Error
 
 (* The monolithic API. *)
 
-val prog: (Lexing.lexbuf -> token) -> Lexing.lexbuf -> (Ast.expr option)
+val prog: (Lexing.lexbuf -> token) -> Lexing.lexbuf -> (Ast.stmt option)
