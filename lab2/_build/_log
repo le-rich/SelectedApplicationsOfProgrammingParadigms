@@ -1,0 +1,29 @@
+### Starting build.
+# Target: main.ml.depends, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, debug, extension:ml, file:main.ml, ocaml, ocamldep, quiet, short_paths, thread }
+ocamlfind ocamldep -package core -ppx 'ppx-jane -as-ppx' -modules main.ml > main.ml.depends # cached
+# Target: ast.ml.depends, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, debug, extension:ml, file:ast.ml, ocaml, ocamldep, quiet, short_paths, thread }
+ocamlfind ocamldep -package core -ppx 'ppx-jane -as-ppx' -modules ast.ml > ast.ml.depends # cached
+# Target: ast.cmo, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, byte, compile, debug, extension:cmo, extension:ml, file:ast.cmo, file:ast.ml, implem, ocaml, quiet, short_paths, thread }
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package core -ppx 'ppx-jane -as-ppx' -o ast.cmo ast.ml # cached
+# Target: lexer.mll, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, debug, extension:mll, file:lexer.mll, lexer, ocaml, ocamllex, quiet, short_paths, thread }
+/home/twoceps/.opam/4.11.1/bin/ocamllex.opt -q lexer.mll # cached
+# Target: lexer.ml.depends, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, debug, extension:ml, file:lexer.ml, ocaml, ocamldep, quiet, short_paths, thread }
+ocamlfind ocamldep -package core -ppx 'ppx-jane -as-ppx' -modules lexer.ml > lexer.ml.depends # cached
+# Target: parser.mly.depends, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, debug, extension:mly, file:parser.mly, infer, menhir_ocamldep, ocaml, ocamldep, quiet, short_paths, thread }
+menhir --raw-depend --ocamldep 'ocamlfind ocamldep -modules' parser.mly > parser.mly.depends # cached
+# Target: parser.mly, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, byte, compile, debug, extension:ml, extension:mly, file:parser.ml, file:parser.mly, infer, menhir, ocaml, parser, quiet, short_paths, thread }
+menhir --ocamlc 'ocamlfind ocamlc -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package core -ppx '\''ppx-jane -as-ppx'\''' --infer parser.mly
++ menhir --ocamlc 'ocamlfind ocamlc -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package core -ppx '\''ppx-jane -as-ppx'\''' --infer parser.mly
+File "parser.mly", line 10, characters 18-21:
+Warning: the token AND is unused.
+File "parser.mly", line 10, characters 25-28:
+Warning: the token NOT is unused.
+File "parser.mly", line 10, characters 22-24:
+Warning: the token OR is unused.
+File "parser.mly", line 16, characters 6-10:
+Warning: the token STAR is unused.
+File "parser.mly", line 46, characters 60-62:
+Error: This variant expression is expected to have type Ast.expr
+       The constructor If does not belong to type Ast.expr
+Command exited with code 1.
+# Compilation unsuccessful.
