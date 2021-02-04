@@ -1,0 +1,6 @@
+#!/bin/bash
+
+corebuild -use-menhir parser.cmo
+corebuild -use-menhir lexer.cmo
+corebuild -use-menhir main.cmo
+corebuild -use-menhir interpret.cmo

@@ -1,0 +1,62 @@
+program           lexer               parser
+sequence of chars  --->  seq of tokens --->  AST
+                          (terminals)
+
+- we use a grammar to specify which sentences are legal in the language
+  i.e., grammar specifies a language
+
+- grammar can be specified by a language called BNF
+  - terminals (tokens) vs non-terminals
+  - productions
+
+  EXPR -> EXPR '+' EXPR  production
+  EXPR -> Num
+
+  EXPR => EXPR + EXPR => 1 + EXPR => 1 + 2  derivation
+  EXPR => ... => 1 + 1
+
+  E -> E + E
+  E -> E * E
+  E -> Num
+
+  E -> E + E -> 1 + E * E -> 1 + 3 * E -> 1 + 2 * 3 (a derivation of 1+2*3)
+        +
+      1    *      = 1 + (2 * 3)
+         2   3
+
+  E -> E * E -> E * 3 -> E + E * 3 -> 1 + E * 3 -> 1 + 2 * 3
+  
+         *
+      +     3     = (1 + 2) * 3
+    1   2    
+
+  this grammar is ambiguous
+
+- given a sentence, is it valid within the grammar of the language?
+  this is one purpose of parsing
+
+  given 1 + 2 * 3, there are 2 distinct ways to parse it with the above
+  grammar
+
+- to resolve ambiguity, we can rewrite the grammar
+  menhir allows us to specify precedence
+
+  E -> E + E'
+  E -> E'
+  E' -> E' * E''
+  E' -> E''
+  E'' -> Num
+
+  E -> E + E' -> E' + E' -> E'' + E' -> 1 + E' -> .. -> 1 + 2 * 3
+
+- context-free grammar
+
+  all rules are of the form
+  NONTERMINAL -> ...
+
+  non-context free, e.g.,
+  a X -> X a
+
+- different types of parser
+  - recursive descent
+  - shift-reduce parser

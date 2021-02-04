@@ -29,6 +29,7 @@ expr:
 	| n = INT																										{ Int n }
 	| MINUS; n = INT																						{ Int (- n) }
 	| v = ID																										{ Var v }
+	| v = ID; EQ; e = expr																			{ Var v }
 	| TRUE																											{ Bool ("true") }
 	| FALSE																											{ Bool ("false") }
 	| LPAR; e = expr; RPAR																			{ e } 
@@ -44,4 +45,5 @@ expr:
 	| e1 = expr; BANG; EQ; e2 = expr														{ Prim("!=", e1, e2) } 
 	| LET; x = ID; EQ; e1 = expr; IN; e2 = expr; END						{ Let (x, e1, e2) } 
 	| IF; e = expr; THEN; e1 = expr; ELSE; e2 = expr; END				{ If (e, e1, e2) }
+	| e1 = expr; e2 = expr;																			{ Call (e1, e2) }
 	;
