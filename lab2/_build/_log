@@ -1,6 +1,6 @@
 ### Starting build.
 # Target: main.ml.depends, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, debug, extension:ml, file:main.ml, ocaml, ocamldep, quiet, short_paths, thread }
-ocamlfind ocamldep -package core -ppx 'ppx-jane -as-ppx' -modules main.ml > main.ml.depends
+ocamlfind ocamldep -package core -ppx 'ppx-jane -as-ppx' -modules main.ml > main.ml.depends # cached
 # Target: ast.ml.depends, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, debug, extension:ml, file:ast.ml, ocaml, ocamldep, quiet, short_paths, thread }
 ocamlfind ocamldep -package core -ppx 'ppx-jane -as-ppx' -modules ast.ml > ast.ml.depends # cached
 # Target: ast.cmo, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, byte, compile, debug, extension:cmo, extension:ml, file:ast.cmo, file:ast.ml, implem, ocaml, quiet, short_paths, thread }
@@ -20,36 +20,5 @@ ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -
 # Target: lexer.cmo, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, byte, compile, debug, extension:cmo, extension:ml, file:lexer.cmo, file:lexer.ml, implem, ocaml, quiet, short_paths, thread }
 ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package core -ppx 'ppx-jane -as-ppx' -o lexer.cmo lexer.ml # cached
 # Target: main.cmo, tags: { package(core), ppx(ppx-jane -as-ppx), bin_annot, byte, compile, debug, extension:cmo, extension:ml, file:main.cmo, file:main.ml, implem, ocaml, quiet, short_paths, thread }
-ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package core -ppx 'ppx-jane -as-ppx' -o main.cmo main.ml
-+ ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package core -ppx 'ppx-jane -as-ppx' -o main.cmo main.ml
-File "main.ml", line 72, characters 4-10:
-72 |   | Prim _              -> failwith "unknown primitive"
-         ^^^^^^
-Warning 11: this match case is unused.
-File "main.ml", lines 43-72, characters 1-55:
-43 | .match e with
-44 | 	| Var x									-> lookup x env
-45 | 	| Int i									-> e
-46 | 	| Bool b								-> e
-47 | 	| Let (x, e1, e2)				-> let v = eval e1 env in
-...
-69 | 				let env''' = (x, xval)::env'' in
-70 | 				eval xval env''' 
-71 | 			| _ -> failwith "fail" 
-72 |   | Prim _              -> failwith "unknown primitive"
-Warning 8: this pattern-matching is not exhaustive.
-Here is an example of a case that is not matched:
-(Prim ("", _, _)|Closure (_, _, _))
-File "main.ml", line 45, characters 7-8:
-45 | 	| Int i									-> e
-            ^
-Warning 27: unused variable i.
-File "main.ml", line 46, characters 8-9:
-46 | 	| Bool b								-> e
-             ^
-Warning 27: unused variable b.
-File "main.ml", line 66, characters 22-26:
-66 | 			| Closure (x, ein, env') ->
-                           ^^^^
-Warning 27: unused variable env'.
+ocamlfind ocamlc -c -w A-4-33-40-41-42-43-34-44 -strict-sequence -g -bin-annot -short-paths -thread -package core -ppx 'ppx-jane -as-ppx' -o main.cmo main.ml # cached
 # Compilation successful.

@@ -16,7 +16,7 @@ let parse_with_error lexbuf =
 			Printf.fprintf stderr "%a: syntax error \n" print_position lexbuf;
 			exit (-1)
 
-let from_string str = 
+let parse str = 
 	let lexbuf = Lexing.from_string(str)
 	in
 	parse_with_error lexbuf
@@ -71,7 +71,7 @@ let rec eval e env =
 			| _ -> failwith "fail" 
   | Prim _              -> failwith "unknown primitive"
 
-let eval_string s = 
-	match from_string s with
+let interpret s = 
+	match parse s with
 		| None -> None
 		| Some t -> Some (eval t emptyenv)
