@@ -10,7 +10,6 @@ exception SyntaxError of string
 let keyword = 
 	function 
 	| "let"		-> LET
-	| "in"		-> IN
 	| "end"		-> END
 	| "if"		-> IF
 	| "then"	-> THEN
@@ -37,6 +36,9 @@ rule read = parse
 	| "and"					{ AND }
 	| "or"					{ OR }
 	| "not"					{ NOT }
+	| "fun"					{ FUN }
+	| "in"					{ IN }
+	| "->"					{ ARROW }
 	| '*'						{ TIMES }
 	|	'+'						{ PLUS }
 	| '-'						{ MINUS }
@@ -47,9 +49,6 @@ rule read = parse
 	| '<'						{ LT }
 	| '>'						{ GT }
 	| '!'						{ BANG }
-	| "let"					{ LET }
-	| "in"					{ IN } 
-	| "end"					{ END }
 	|	id						{ keyword (Lexing.lexeme lexbuf) }
 	| eof						{ EOF }
 	| _ { raise (SyntaxError("Unexpected Token: " ^ Lexing.lexeme lexbuf)) }

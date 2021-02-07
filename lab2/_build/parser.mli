@@ -18,6 +18,7 @@ type token =
   | IF
   | ID of (string)
   | GT
+  | FUN
   | FALSE
   | EQ
   | EOF
@@ -25,6 +26,7 @@ type token =
   | ELSE
   | DIVIDE
   | BANG
+  | ARROW
   | AND
 
 (* This exception is raised by the monolithic API functions. *)

@@ -1,1 +1,1 @@
-main.ml: Ast Lexer Lexing Parser Parsing Ppx_module_timer_runtime Printf
+main.ml: Ast Lexer Lexing Parser Parsing Ppx_module_timer_runtime Printf String
