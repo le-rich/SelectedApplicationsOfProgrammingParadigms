@@ -15,9 +15,8 @@ defmodule Lab3 do
   end
 
   atm = File.read("atomic-weights.txt") |> elem(1) |> String.split("\n") |> Enum.map(fn x -> String.split(x, "\t") |> List.to_tuple() end) 
-  for {num, sym, name, weight} <- atm do
+  for {_num, sym, _name, weight} <- atm do
     funName = String.downcase(sym) |> String.to_atom()
-    IO.puts(funName)
     def unquote(funName)() do
       unquote(weight)
     end
